@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IpFinder {
-    private String regex = "[\\d]+[.][\\d]+[.][\\d]+[.][\\d]+";
+    private final String PATTERN = "[\\d]+[.][\\d]+[.][\\d]+[.][\\d]+";
     private File file;
     private String string;
 
@@ -26,10 +26,6 @@ public class IpFinder {
         this.string = string;
     }
 
-    public void findIp() {
-
-    }
-
 
     public void findIpInFile() {
         checkInput(Source.FILE);
@@ -38,7 +34,7 @@ public class IpFinder {
             while ((line = reader.readLine()) != null) {
 
 
-                Pattern pattern = Pattern.compile(regex);
+                Pattern pattern = Pattern.compile(PATTERN);
                 Matcher matcher = pattern.matcher(line);
                 while (matcher.find()) {
 
@@ -55,7 +51,7 @@ public class IpFinder {
 
     public void findIpInString() {
         checkInput(Source.STRING);
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(PATTERN);
         Matcher matcher = pattern.matcher(string);
         while (matcher.find()) {
 
